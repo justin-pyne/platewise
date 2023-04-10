@@ -5,23 +5,38 @@ body {
   color: #FFFFFF;
 }
 
-/* Highlights */
-.highlight {
-  color: #FF5349;
+/* Navbar styling */
+.navbar-custom {
+  background-color: #FF5349;
 }
 
-/* Navigation bar */
-.navbar {
-  background-color: #48494B;
-}
-
-.navbar .nav-link {
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
   color: #FFFFFF;
 }
 
-.navbar .nav-link:hover {
-  color: #FF5349;
+.navbar-custom .nav-link:hover {
+  color: #FF786F;
 }
+
+.navbar-custom .dropdown-menu {
+  background-color: #FF5349;
+}
+
+.navbar-custom .dropdown-item {
+  color: #FFFFFF;
+}
+
+.navbar-custom .dropdown-item:hover {
+  background-color: #FF786F;
+}
+
+/* Remove bullet points from the navbar */
+.navbar-nav {
+  list-style: none;
+  padding-left: 0;
+}
+
 
 /* Buttons */
 .btn {
