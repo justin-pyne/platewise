@@ -1,0 +1,36 @@
+/* Basic styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #48494B;
+  color: #FFFFFF;
+}
+
+/* Highlights */
+.highlight {
+  color: #FF5349;
+}
+
+/* Navigation bar */
+.navbar {
+  background-color: #48494B;
+}
+
+.navbar .nav-link {
+  color: #FFFFFF;
+}
+
+.navbar .nav-link:hover {
+  color: #FF5349;
+}
+
+/* Buttons */
+.btn {
+  background-color: #FF5349;
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #FF786F;
+  color: #FFFFFF;
+}
