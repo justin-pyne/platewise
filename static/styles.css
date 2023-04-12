@@ -127,3 +127,33 @@ a:hover {
 .note:last-child {
   margin-bottom: 0;
 }
+
+/* Calendar */
+.btn-platewise {
+  background-color: #FF5349;
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn-platewise:hover,
+.btn-platewise:focus,
+.btn-platewise:active {
+  background-color: #FF5349;
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+
+.modal-content {
+  background-color: #48494B;
+  color: #FFFFFF;
+}
+
+.modal-header .close {
+  color: #FFFFFF;
+}
+
+.modal-header .close:hover,
+.modal-header .close:focus {
+  color: #FFFFFF;
+  opacity: 0.8;
+}

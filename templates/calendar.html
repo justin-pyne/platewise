@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center my-4">Your Calendar</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Calendar widget will go here -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center my-4">
+                <button type="button" class="btn btn-platewise" data-toggle="modal" data-target="#addRecipeModal">
+                    Add Recipe to Calendar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Recipe to Calendar Modal -->
+<div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addRecipeModalLabel">Add Recipe to Calendar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Add Recipe to Calendar form goes here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-platewise">Add to Calendar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
