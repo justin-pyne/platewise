@@ -1,4 +1,4 @@
-## Platewise
+# Platewise
 
 Platewise is a web application designed for managing and organizing your recipes and meal planning. Users can create, read, update, and delete recipes, take notes on recipes to critically improve cooking skills, and add recipes to their calendar for better meal planning.
 
