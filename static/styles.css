@@ -50,16 +50,18 @@ a:hover {
 }
 
 /* Buttons */
-.btn {
+.btn, .btn-primary {
   background-color: #FF5349;
   color: #FFFFFF;
   border: none;
   border-radius: 4px;
 }
 
-.btn:hover {
-  background-color: #FF786F;
+.btn:hover, .btn:focus, .btn:active,
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #FF5349;
   color: #FFFFFF;
+  opacity: 0.8;
 }
 
 /* Container */
@@ -129,20 +131,6 @@ a:hover {
 }
 
 /* Calendar */
-.btn-platewise {
-  background-color: #FF5349;
-  color: #FFFFFF;
-  border: none;
-}
-
-.btn-platewise:hover,
-.btn-platewise:focus,
-.btn-platewise:active {
-  background-color: #FF5349;
-  color: #FFFFFF;
-  opacity: 0.8;
-}
-
 .modal-content {
   background-color: #48494B;
   color: #FFFFFF;
