@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Recipes</h2>
+    <button class="btn btn-primary">Add Recipe</button>
+  </div>
+  
+  <div class="d-flex mb-4">
+    <input type="search" class="form-control me-2" placeholder="Search...">
+    <select class="form-select" aria-label="Category filter">
+      <option selected>Filter by Category</option>
+      <!-- Add your recipe categories here -->
+    </select>
+  </div>
+  
+  <div class="row">
+    <!-- Add recipe cards or list items here -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow">
+        <img src="https://via.placeholder.com/300" alt="Recipe Image" class="card-img-top">
+        <div class="card-body">
+          <h4>Recipe Title</h4>
+          <p class="text-muted">Category</p>
+          <a href="#" class="btn btn-primary">View Recipe</a>
+        </div>
+      </div>
+    </div>
+    <!-- Add more recipe cards -->
+  </div>
+</div>
+{% endblock %}
