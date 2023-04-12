@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="recipe-image mb-4">
+        <img src="https://via.placeholder.com/800x400" alt="Recipe Image" class="img-fluid">
+      </div>
+      <h2>Recipe Title</h2>
+      <p class="text-muted">Category</p>
+      <h4>Ingredients</h4>
+      <ul class="list-unstyled">
+        <!-- Add ingredients here -->
+        <li>1 cup of flour</li>
+        <li>2 eggs</li>
+        <!-- etc. -->
+      </ul>
+      <h4>Nutritional Facts</h4>
+      <table class="table">
+        <!-- Add nutritional facts here -->
+        <tr>
+          <th>Calories</th>
+          <td>200</td>
+        </tr>
+        <!-- Add more nutritional facts -->
+      </table>
+    </div>
+    <div class="col-md-4">
+      <h4>Notes</h4>
+      <div class="mb-4">
+        <!-- Add notes with date labels here -->
+        <div class="note">
+          <p><strong>Date:</strong> 04/01/2023</p>
+          <p>Really enjoyed making this recipe. Would add a little more seasoning next time.</p>
+        </div>
+        <!-- Add more notes -->
+      </div>
+      <div class="d-flex">
+        <button class="btn btn-primary me-2">Edit Recipe</button>
+        <button class="btn btn-secondary">Add Note</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
