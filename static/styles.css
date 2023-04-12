@@ -88,3 +88,10 @@ a:hover {
 .mb-3 {
   margin-bottom: 1rem !important;
 }
+
+/* Profile Image */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
