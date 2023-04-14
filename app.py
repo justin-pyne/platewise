@@ -1,7 +1,8 @@
-from flask import Flask, flash, render_template, redirect, url_for, flash, request
+from flask import Flask, flash, render_template, redirect, url_for, flash, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from models import Recipe
 import os
 import re
 
@@ -81,6 +82,67 @@ def profile():
 def logout():
     logout_user()
     return redirect(url_for("login"))
+
+##### CRUD Functionality for Recipes
+
+# Create
+@app.route('/recipe/create', methods=['GET', 'POST'])
+def create_recipe():
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+        ingredients = request.form['ingredients']
+        instructions = request.form['instructions']
+        image_url = request.form['image_url']
+
+        new_recipe = Recipe(title=title, description=description, ingredients=ingredients, instructions=instructions, image_url=image_url, user_id=current_user.id)
+        db.session.add(new_recipe)
+        db.session.commit()
+
+        flash('Recipe created successfully', 'success')
+        return redirect(url_for('read_recipe', recipe_id=new_recipe.id))
+    else:
+        return render_template('create_recipe.html')
+
+
+# Read
+@app.route('/recipe/<int:recipe_id>', methods=['GET'])
+def read_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    return render_template('read_recipe.html', recipe=recipe)
+
+
+# Update
+@app.route('/recipe/<int:recipe_id>/update', methods=['GET', 'POST'])
+def update_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+
+    if request.method == 'POST':
+        recipe.title = request.form['title']
+        recipe.description = request.form['description']
+        recipe.ingredients = request.form['ingredients']
+        recipe.instructions = request.form['instructions']
+        recipe.image_url = request.form['image_url']
+
+        db.session.commit()
+
+        flash('Recipe updated successfully', 'success')
+        return redirect(url_for('read_recipe', recipe_id=recipe.id))
+    else:
+        return render_template('update_recipe.html', recipe=recipe)
+
+
+# Delete
+@app.route('/recipe/<int:recipe_id>/delete', methods=['POST'])
+def delete_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+
+    db.session.delete(recipe)
+    db.session.commit()
+
+    flash('Recipe deleted successfully', 'success')
+    return redirect(url_for('your_route_after_deletion'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
