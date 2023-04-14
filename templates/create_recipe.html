@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{{ url_for('create_recipe') }}" method="POST">
+    {{ form.hidden_tag() }}
+    <!-- Add form fields and labels here -->
+    <button type="submit">Submit</button>
+</form>
+
+<label for="{{ form.title.id }}">Title</label>
+{{ form.title }}
+{{ form.title.errors }}
+
+<!-- Repeat this pattern for other fields (description, ingredients, instructions, and image_url) -->
+
+{% endblock %}
