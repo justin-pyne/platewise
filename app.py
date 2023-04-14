@@ -83,6 +83,12 @@ def logout():
     logout_user()
     return redirect(url_for("login"))
 
+# Owner check for recipe editing
+def is_owner(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    return current_user.is_authenticated and current_user.id == recipe.user_id
+
+
 ##### CRUD Functionality for Recipes
 
 # Create
@@ -115,6 +121,10 @@ def read_recipe(recipe_id):
 # Update
 @app.route('/recipe/<int:recipe_id>/update', methods=['GET', 'POST'])
 def update_recipe(recipe_id):
+    if not is_owner(recipe_id):
+        flash('You do not have permission to update this recipe.', 'danger')
+        return redirect(url_for('read_recipe', recipe_id=recipe_id))    
+    
     recipe = Recipe.query.get_or_404(recipe_id)
 
     if request.method == 'POST':
@@ -135,6 +145,10 @@ def update_recipe(recipe_id):
 # Delete
 @app.route('/recipe/<int:recipe_id>/delete', methods=['POST'])
 def delete_recipe(recipe_id):
+    if not is_owner(recipe_id):
+        flash('You do not have permission to delete this recipe.', 'danger')
+        return redirect(url_for('read_recipe', recipe_id=recipe_id))
+    
     recipe = Recipe.query.get_or_404(recipe_id)
 
     db.session.delete(recipe)
