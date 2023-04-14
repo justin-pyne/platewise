@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import Recipe
+from forms import RecipeForm
 import os
 import re
 
@@ -94,7 +95,8 @@ def is_owner(recipe_id):
 # Create
 @app.route('/recipe/create', methods=['GET', 'POST'])
 def create_recipe():
-    if request.method == 'POST':
+    form = RecipeForm()
+    if request.method == 'POST' and form.validate_on_submit():
         title = request.form['title']
         description = request.form['description']
         ingredients = request.form['ingredients']
@@ -108,7 +110,7 @@ def create_recipe():
         flash('Recipe created successfully', 'success')
         return redirect(url_for('read_recipe', recipe_id=new_recipe.id))
     else:
-        return render_template('create_recipe.html')
+        return render_template('create_recipe.html', form=form)
 
 
 # Read
@@ -126,8 +128,8 @@ def update_recipe(recipe_id):
         return redirect(url_for('read_recipe', recipe_id=recipe_id))    
     
     recipe = Recipe.query.get_or_404(recipe_id)
-
-    if request.method == 'POST':
+    form = RecipeForm(obj=recipe)
+    if request.method == 'POST' and form.validate_on_submit():
         recipe.title = request.form['title']
         recipe.description = request.form['description']
         recipe.ingredients = request.form['ingredients']
@@ -139,7 +141,7 @@ def update_recipe(recipe_id):
         flash('Recipe updated successfully', 'success')
         return redirect(url_for('read_recipe', recipe_id=recipe.id))
     else:
-        return render_template('update_recipe.html', recipe=recipe)
+        return render_template('update_recipe.html', form=form, recipe=recipe)
 
 
 # Delete
